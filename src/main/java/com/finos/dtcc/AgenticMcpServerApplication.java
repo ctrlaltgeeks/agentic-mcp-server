@@ -5,10 +5,12 @@ import org.springframework.ai.tool.method.MethodToolCallbackProvider;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
-import com.finos.dtcc.tool.ClientOnboarding;
+import com.finos.dtcc.tool.ClientTool;
 
 @SpringBootApplication
+@EnableJpaAuditing
 public class AgenticMcpServerApplication {
 
 	public static void main(String[] args) {
@@ -16,7 +18,7 @@ public class AgenticMcpServerApplication {
 	}
 
 	@Bean
-	public ToolCallbackProvider fintechTools(ClientOnboarding clientOnboarding) {
+	public ToolCallbackProvider fintechTools(ClientTool clientOnboarding) {
 		return MethodToolCallbackProvider.builder().toolObjects(clientOnboarding).build();
 	}
 
