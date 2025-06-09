@@ -35,7 +35,7 @@ public class ClientOnboarding {
      * @return An OnboardingResponse indicating the status of the onboarding
      *         process.
      */
-    @Tool(name = "Client Onboarding", description = "Handles client onboarding by processing KYC documents using OCR service.")
+    @Tool(name = "ClientOnboarding", description = "Handles client onboarding by processing KYC documents using OCR service.")
     public OnboardingResponse onboard(String clientId) {
         log.info("Onboarding user with ID: {}", clientId);
 
