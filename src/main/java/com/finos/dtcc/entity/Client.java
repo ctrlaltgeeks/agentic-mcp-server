@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.finos.dtcc.enums.KycStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -28,6 +29,10 @@ public class Client {
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "kyc_details", joinColumns = @JoinColumn(name = "client_id"))
     private List<KycDetails> kycDetails;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "kyc_status")
+    private KycStatus kycStatus;
 
     @CreatedDate
     @Column(name = "created_on", nullable = false, updatable = false)
