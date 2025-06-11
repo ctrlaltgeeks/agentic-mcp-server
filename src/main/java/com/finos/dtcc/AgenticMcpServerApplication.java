@@ -1,9 +1,6 @@
 package com.finos.dtcc;
 
-import com.finos.dtcc.tool.ClientTool;
-import com.finos.dtcc.tool.FraudDetectionTool;
-import com.finos.dtcc.tool.LeadTool;
-import com.finos.dtcc.tool.PortfolioGeneratorTool;
+import com.finos.dtcc.tool.*;
 import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.ai.tool.method.MethodToolCallbackProvider;
 import org.springframework.boot.SpringApplication;
@@ -21,10 +18,11 @@ public class AgenticMcpServerApplication {
 
     @Bean
     public ToolCallbackProvider fintechTools(ClientTool clientTool, FraudDetectionTool fraudDetectionTool,
-                                             PortfolioGeneratorTool portfolioGeneratorTool, LeadTool leadTool) {
+                                             PortfolioGeneratorTool portfolioGeneratorTool, LeadTool leadTool,
+                                             ZerodhaTool zerodhaTool) {
 
         return MethodToolCallbackProvider.builder()
-                .toolObjects(clientTool, fraudDetectionTool, portfolioGeneratorTool, leadTool)
+                .toolObjects(clientTool, fraudDetectionTool, portfolioGeneratorTool, leadTool, zerodhaTool)
                 .build();
     }
 
